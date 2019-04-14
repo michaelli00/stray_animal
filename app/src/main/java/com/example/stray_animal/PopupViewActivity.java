@@ -54,21 +54,24 @@ public class PopupViewActivity extends AppCompatActivity {
                     ex.printStackTrace();
                 }
 
-                ListenableFuture<Bitmap> bitmapListenableFuture = popupAttachments.get(0).createFullImageAsync();
-                bitmapListenableFuture.addDoneListener(new Runnable() {
-                    @Override
-                    public void run() {
-                        bitmap = null;
-                        try {
-                            // get the identify results from the future - returns when the operation is complete
-                            bitmap = bitmapListenableFuture.get();
+                if(popupAttachments.size() > 0){
+                    ListenableFuture<Bitmap> bitmapListenableFuture = popupAttachments.get(0).createFullImageAsync();
+                    bitmapListenableFuture.addDoneListener(new Runnable() {
+                        @Override
+                        public void run() {
+                            bitmap = null;
+                            try {
+                                // get the identify results from the future - returns when the operation is complete
+                                bitmap = bitmapListenableFuture.get();
 
-                        } catch (InterruptedException | ExecutionException ex) {
-                            // must deal with checked exceptions thrown from the async identify operation
-                            ex.printStackTrace();
+                            } catch (InterruptedException | ExecutionException ex) {
+                                // must deal with checked exceptions thrown from the async identify operation
+                                ex.printStackTrace();
+                            }
                         }
-                    }
-                });
+                    });
+                }
+
             }
         });
 
