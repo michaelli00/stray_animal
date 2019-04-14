@@ -78,6 +78,7 @@ public class PhotoActivity extends AppCompatActivity {
     private String imageFilePath = "";
     private double longitude, latitude;
     private boolean mLocationPermissionGranted = false;
+    private int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,6 +147,7 @@ public class PhotoActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Log.d("Photo Activity", "Clicked");
 
                 popupManager.startEditing();
@@ -155,6 +157,7 @@ public class PhotoActivity extends AppCompatActivity {
                 try {
                     if(bitmap != null){
                         popupAttachmentManager.addAttachment("attachment", bitmap, Bitmap.CompressFormat.PNG);
+                        Log.d("Add Bitmap", "added bitmap");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -163,17 +166,24 @@ public class PhotoActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
+                        popup = popupManager.getPopup();
+                        Log.d("Photo Activity", "got popup");
+                        Feature feature = (Feature)popup.getGeoElement();
+                        Log.d("Photo Activity", feature.getAttributes().toString());
+                        ServiceFeatureTable table = (ServiceFeatureTable)feature.getFeatureTable();
+                        applyEdits(table);
+                        Log.d("finishEditingAsync", "finished");
+
 
                     }
                 });
-                popup = popupManager.getPopup();
-                Log.d("Photo Activity", "got popup");
-                Feature feature = (Feature)popup.getGeoElement();
-                Point p = new Point(longitude, latitude, SpatialReferences.getWgs84());
-                feature.setGeometry(p);
-                Log.d("Photo Activity", feature.getAttributes().toString());
-                ServiceFeatureTable table = (ServiceFeatureTable)feature.getFeatureTable();
-                table.addFeatureAsync(feature).addDoneListener(() -> applyEdits(table));
+
+
+                Log.d("Outside Run", "outside");
+
+
+
+
 //                    @Override
 //                    public void run() {
 //

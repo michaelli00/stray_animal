@@ -22,6 +22,7 @@ import com.esri.arcgisruntime.data.Feature;
 import com.esri.arcgisruntime.data.FeatureTable;
 import com.esri.arcgisruntime.data.ServiceFeatureTable;
 import com.esri.arcgisruntime.geometry.GeometryEngine;
+import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.layers.FeatureLayer;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
@@ -156,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
                     Feature newFeature = featureTable.createFeature();
                     //newFeature.setGeometry( GeometryEngine.normalizeCentralMeridian(mMapView.screenToLocation(new android.graphics.Point(0,0))));
                     //Log.d("Main Activity", newFeature.getGeometry().toString());
+                    Point p = new Point(longitude, latitude, SpatialReferences.getWgs84());
+                    newFeature.setGeometry(p);
                     Log.d("Main Activity", "Test");
                     PopupDefinition definition = featureTable.getPopupDefinition();
                     Popup newPopup = new Popup(newFeature, definition);
