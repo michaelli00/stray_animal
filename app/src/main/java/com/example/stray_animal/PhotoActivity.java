@@ -153,7 +153,9 @@ public class PhotoActivity extends AppCompatActivity {
                 popupManager.updateValue(spinner2.getSelectedItem().toString(), condition);
                 popupManager.updateValue(textView.getText().toString(), description);
                 try {
-                    popupAttachmentManager.addAttachment("attachment", bitmap, Bitmap.CompressFormat.PNG);
+                    if(bitmap != null){
+                        popupAttachmentManager.addAttachment("attachment", bitmap, Bitmap.CompressFormat.PNG);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
