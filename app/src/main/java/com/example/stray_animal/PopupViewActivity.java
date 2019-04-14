@@ -1,6 +1,7 @@
 package com.example.stray_animal;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,12 +12,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.esri.arcgisruntime.concurrent.ListenableFuture;
+import com.esri.arcgisruntime.data.Attachment;
 import com.esri.arcgisruntime.mapping.popup.Popup;
 import com.esri.arcgisruntime.mapping.popup.PopupAttachment;
 import com.esri.arcgisruntime.mapping.popup.PopupAttachmentManager;
 import com.esri.arcgisruntime.mapping.popup.PopupField;
 import com.esri.arcgisruntime.mapping.popup.PopupManager;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -55,14 +58,15 @@ public class PopupViewActivity extends AppCompatActivity {
                 }
 
                 if(popupAttachments.size() > 0){
-                    ListenableFuture<Bitmap> bitmapListenableFuture = popupAttachments.get(0).createFullImageAsync();
-                    bitmapListenableFuture.addDoneListener(new Runnable() {
+                    Attachment attachment = popupAttachments.get(0).getAttachment();
+                    ListenableFuture<InputStream> attachmentListenableFuture = attachment.fetchDataAsync();
+                    attachmentListenableFuture.addDoneListener(new Runnable() {
                         @Override
                         public void run() {
                             bitmap = null;
                             try {
                                 // get the identify results from the future - returns when the operation is complete
-                                bitmap = bitmapListenableFuture.get();
+                                bitmap = BitmapFactory.decodeStream(attachmentListenableFuture.get());
 
                             } catch (InterruptedException | ExecutionException ex) {
                                 // must deal with checked exceptions thrown from the async identify operation
