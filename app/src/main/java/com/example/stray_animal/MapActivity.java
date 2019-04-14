@@ -1,13 +1,16 @@
 package com.example.stray_animal;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.view.MapView;
 
-public class MainActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity {
 
     private MapView mMapView;
 
@@ -28,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mMapView = findViewById(R.id.mapView);
         setupMap();
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MapActivity.this, PhotoActivity.class));
+
+            }
+        });
     }
 
     @Override
@@ -54,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onDestroy();
     }
-//    FloatingActionButton fab = findViewById(R.id.fab);
-
 
 
 }
