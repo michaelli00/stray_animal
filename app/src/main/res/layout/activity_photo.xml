@@ -9,13 +9,15 @@
     <Spinner
         android:id="@+id/list"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"/>
     <Spinner
         android:id="@+id/list2"
         android:layout_marginTop="16dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/list"/>
+        android:layout_below="@+id/list"
+        android:spinnerMode="dropdown"/>
     <EditText
         android:hint="@string/enter_description"
         android:id="@+id/plain_text_input"
@@ -26,7 +28,7 @@
         android:importantForAutofill="no"
         tools:ignore="UnusedAttribute"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/list"/>
+        android:layout_below="@+id/list2"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -34,7 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp" />
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/camera"
+        app:backgroundTint="@color/common_google_signin_btn_text_dark_default" />
 
     <Button
         android:id="@+id/button"
@@ -45,7 +49,7 @@
         android:layout_below="@+id/image"/>
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="250dp"
         android:layout_centerInParent="true"
         android:id="@+id/image"/>

@@ -11,7 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="16dp" />
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/add_circle"
+        app:backgroundTint="@color/common_google_signin_btn_text_dark_default" />
 
     <com.esri.arcgisruntime.mapping.view.MapView
         android:id="@+id/mapView"
