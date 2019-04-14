@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1084640951082",
+    "firebase_url": "https://straybitcamp2019.firebaseio.com",
+    "project_id": "straybitcamp2019",
+    "storage_bucket": "straybitcamp2019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084640951082:android:f680f60d0a194a9d",
+        "android_client_info": {
+          "package_name": "com.example.stray_animal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084640951082-vjf835lgftfek0tmakmceiockteka6jf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsdbvUXpInV3dnE_HKXbWSkmNtlU4EY2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084640951082-vjf835lgftfek0tmakmceiockteka6jf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
