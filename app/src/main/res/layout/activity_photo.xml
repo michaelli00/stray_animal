@@ -10,6 +10,14 @@
         android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/list2"
+        android:layout_marginTop="16dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list"/>
+
     <EditText
         android:hint="@string/enter_description"
         android:id="@+id/plain_text_input"
@@ -20,7 +28,7 @@
         android:importantForAutofill="no"
         tools:ignore="UnusedAttribute"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/list"/>
+        android:layout_below="@+id/list2"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -39,6 +47,7 @@
         android:layout_below="@+id/image"/>
 
     <ImageView
+        android:layout_below="@+id/plain_text_input"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_centerInParent="true"
